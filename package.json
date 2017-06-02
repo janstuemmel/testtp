@@ -1,0 +1,34 @@
+{
+  "name": "testtp",
+  "version": "0.0.1",
+  "description": "simple library to test node http servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janstuemmel/testtp.git"
+  },
+  "keywords": [
+    "express",
+    "koa",
+    "node",
+    "js",
+    "test",
+    "testing",
+    "http"
+  ],
+  "author": "Jan Stümmel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janstuemmel/testtp/issues"
+  },
+  "homepage": "https://github.com/janstuemmel/testtp#readme",
+  "devDependencies": {
+    "express": "^4.15.3",
+    "jest": "^20.0.4",
+    "node-fetch": "^1.7.0"
+  },
+  "dependencies": {}
+}
