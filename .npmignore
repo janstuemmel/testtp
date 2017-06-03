@@ -1,5 +1,6 @@
 .eslintrc.yml
 .gitignore
+.npmignore
 .travis.yml
 .babelrc
 .eslintignore
