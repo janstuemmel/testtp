@@ -5,3 +5,4 @@
 .eslintignore
 coverage
 test.js
+yarn.lock
