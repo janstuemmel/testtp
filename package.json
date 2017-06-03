@@ -1,6 +1,6 @@
 {
   "name": "testtp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "simple library to test node http servers",
   "main": "index.js",
   "scripts": {
