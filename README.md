@@ -1,6 +1,7 @@
 # Testtp
 
 [![Build Status](https://travis-ci.org/janstuemmel/testtp.svg?branch=master)](https://travis-ci.org/janstuemmel/testtp)
+[![Test Coverage](https://codeclimate.com/github/janstuemmel/testtp/badges/coverage.svg)](https://codeclimate.com/github/janstuemmel/testtp/coverage)
 
 A library that simplifies testing with node http.Server's or listeners like express.
 It exposes `node-fetch` ([bitinn/node-fetch](https://github.com/bitinn/node-fetch)) to get data from the test server.

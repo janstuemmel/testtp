@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/janstuemmel/testtp#readme",
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
     "express": "^4.15.3",
     "jest": "^20.0.4",
     "tcp-port-used": "^0.1.2"
