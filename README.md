@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/janstuemmel/testtp.svg?branch=master)](https://travis-ci.org/janstuemmel/testtp)
 [![Test Coverage](https://codeclimate.com/github/janstuemmel/testtp/badges/coverage.svg)](https://codeclimate.com/github/janstuemmel/testtp/coverage)
+[![npm version](https://badge.fury.io/js/testtp.svg)](https://badge.fury.io/js/testtp)
 
 A library that simplifies testing with node http.Server's or listeners like express.
 It exposes `node-fetch` ([bitinn/node-fetch](https://github.com/bitinn/node-fetch)) to get data from the test server.
@@ -9,7 +10,7 @@ It exposes `node-fetch` ([bitinn/node-fetch](https://github.com/bitinn/node-fetc
 ## Install
 
 ```sh
-npm install --save-dev testtp 
+npm install --save-dev testtp
 ```
 
 ## Usage
