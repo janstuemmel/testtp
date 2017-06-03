@@ -1,0 +1,7 @@
+.eslintrc.yml
+.gitignore
+.travis.yml
+.babelrc
+.eslintignore
+coverage
+test.js

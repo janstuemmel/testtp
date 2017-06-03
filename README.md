@@ -9,7 +9,7 @@ It exposes `node-fetch` ([bitinn/node-fetch](https://github.com/bitinn/node-fetc
 ## Install
 
 ```sh
-npm i janstuemmel/testtp
+npm install --save-dev testtp 
 ```
 
 ## Usage

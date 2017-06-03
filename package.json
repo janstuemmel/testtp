@@ -7,7 +7,10 @@
     "test": "jest",
     "test:all": "npm test -- --coverage && npm run lint",
     "test:watch": "npm test -- --watch",
-    "lint": "eslint index.js"
+    "lint": "eslint index.js",
+    "version:patch": "npm run test:all && npm version patch",
+    "version:minor": "npm run test:all && npm version minor",
+    "version:major": "npm run test:all && npm version major"
   },
   "repository": {
     "type": "git",
