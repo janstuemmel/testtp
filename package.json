@@ -4,7 +4,10 @@
   "description": "simple library to test node http servers",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:all": "npm test -- --coverage && npm run lint",
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint index.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
   "homepage": "https://github.com/janstuemmel/testtp#readme",
   "devDependencies": {
     "codeclimate-test-reporter": "^0.5.0",
+    "eslint": "^3.19.0",
     "express": "^4.15.3",
     "jest": "^20.0.4",
     "tcp-port-used": "^0.1.2"

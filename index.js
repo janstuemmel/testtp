@@ -28,7 +28,7 @@ Testtp.prototype.close = function(cb) {
   return new Promise((res, rej) => {
     try {
       this._server.close(() => {
-        if(typeof cb === "function") cb();
+        if(typeof cb === 'function') cb();
         res();
       });
     } catch(e) {
@@ -48,7 +48,7 @@ module.exports = (server, cb) => {
     try {
       server.listen(0, '127.0.0.1', () => {
         var testtp = new Testtp(server);
-        if(typeof cb === "function") cb(null, testtp);
+        if(typeof cb === 'function') cb(null, testtp);
         res(testtp);
       });
     } catch(e) {
