@@ -39,6 +39,80 @@ describe('testtp', () => {
 
   describe('server tests', () => {
 
+    it('server close error', async (done) => {
+
+      // given
+      var server = http.createServer();
+
+      server.close = jest.fn(server.close)
+        .mockImplementationOnce(() => { throw Error() });
+
+      var test = await createTestServer(server);
+
+      // when
+      test.close().catch(e => {
+        expect(e).toEqual(expect.any(Error));
+        done()
+      })
+
+      // after
+      await test.close();
+    });
+
+
+    it('server close error via callback', async (done) => {
+
+      // given
+      var server = http.createServer();
+
+      server.close = jest.fn(server.close)
+        .mockImplementationOnce(() => { throw Error() });
+
+      var test = await createTestServer(server);
+
+      // when
+      test.close(e => {
+        expect(e).toEqual(expect.any(Error));
+        done()
+      })
+
+      // after
+      await test.close();
+    });
+
+
+    it('server listen error', (done) => {
+
+      // given
+      var server = http.createServer();
+      server.listen = null;
+
+      // when
+      createTestServer(server).catch((e) => {
+
+        // then
+        expect(e).toEqual(expect.any(Error));
+        done()
+      });
+    });
+
+
+    it('server listen error callback', (done) => {
+
+      // given
+      var server = http.createServer();
+      server.listen = jest.fn(() => { throw Error('ERR') });
+
+      // when
+      createTestServer(server, (e) => {
+
+        // then
+        expect(e).toEqual(expect.any(Error));
+        done()
+      });
+    });
+
+
     it('should listen', async () => {
 
       // when

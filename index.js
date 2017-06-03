@@ -23,19 +23,40 @@ class Testtp {
   }
 }
 
+function tryClose(server, res, rej) {
+  try {
+    server.close(res);
+  } catch(e) {
+    rej ? rej(e) : res(e);
+  }
+}
+
+
 Testtp.prototype.close = function(cb) {
 
+
+  if(typeof cb === 'function') {
+    tryClose(this._server, cb);
+    return;
+  }
+
   return new Promise((res, rej) => {
-    try {
-      this._server.close(() => {
-        if(typeof cb === 'function') cb();
-        res();
-      });
-    } catch(e) {
-      rej(e);
-    }
+    tryClose(this._server, res, rej);
   });
+
 };
+
+
+function tryListen(server, res, rej) {
+
+  try {
+    server.listen(0, '127.0.0.1', () =>
+      rej ? res(new Testtp(server)) : res(null, new Testtp(server)));
+  } catch(e) {
+    rej ? rej(e) : res(e);
+  }
+}
+
 
 module.exports = (server, cb) => {
 
@@ -44,16 +65,12 @@ module.exports = (server, cb) => {
     server = http.createServer(server);
   }
 
+  if(typeof cb === 'function') {
+    tryListen(server, cb);
+    return;
+  }
+
   return new Promise((res, rej) => {
-    try {
-      server.listen(0, '127.0.0.1', () => {
-        var testtp = new Testtp(server);
-        if(typeof cb === 'function') cb(null, testtp);
-        res(testtp);
-      });
-    } catch(e) {
-      cb(e);
-      rej(e);
-    }
+    tryListen(server, res, rej);
   });
 };
