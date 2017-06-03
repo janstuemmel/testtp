@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/janstuemmel/testtp.svg?branch=master)](https://travis-ci.org/janstuemmel/testtp)
 
-A library for testing node http.Server.
-Works with express.
+A library that simplifies testing with node http.Server's or listeners like express.
+It exposes `node-fetch` ([bitinn/node-fetch](https://github.com/bitinn/node-fetch)) to get data from the test server.
 
 ## Install
 
@@ -28,7 +28,7 @@ describe('tests', () => {
     // given
     var app = express().get('/', (req, res) => res.send('OK'));
 
-    // returns the Testtp instance
+    // returns a Testtp instance
     var test = await createTestServer(app);
 
     expect(test._server).toEqual(expect.any(http.Server));
@@ -37,7 +37,7 @@ describe('tests', () => {
     expect(test.url).toBe(['http://127.0.0.1', test.port].join(':'));
 
     // when
-    var res = await fetch(test.url);
+    var res = await test.get('/');
     var text = await res.text();
 
     // then
@@ -53,12 +53,17 @@ describe('tests', () => {
 
 ## API
 
+`testtp(server [, cb])` returns a Promise instance to create `Testtp` instance
+  * arg `server` a http.Server (or express etc.) instance
+  * arg `cb` optional callback with `Testtp` instance
+
 `Class: Testtp`
   * `_server` Stores the node http.Server instance
   * `port` Stores the port
   * `address` Stores the address, `127.0.0.1`
   * `url` Stores the full url, `http://127.0.0.1:1337`
-  * `close()` Closes the connection (Promise)
+  * `close([cb])` Closes the connection (Callback or Promise)
+  * `[HTTP_METHOD](path)` Requests the test server (`node-fetch`)
 
 ## License
 
